@@ -176,9 +176,11 @@ const unsigned int CDBWrapper::OBFUSCATE_KEY_NUM_BYTES = 8;
  */
 std::vector<unsigned char> CDBWrapper::CreateObfuscateKey() const
 {
-    unsigned char buff[OBFUSCATE_KEY_NUM_BYTES];
-    GetRandBytes(buff, OBFUSCATE_KEY_NUM_BYTES);
-    return std::vector<unsigned char>(&buff[0], &buff[OBFUSCATE_KEY_NUM_BYTES]);
+    //FOLLOWING COMMENTED OUT LINE TO ENFORCE 0 xor obfuscation key
+    //unsigned char buff[OBFUSCATE_KEY_NUM_BYTES];
+    //GetRandBytes(buff, OBFUSCATE_KEY_NUM_BYTES);
+    //return std::vector<unsigned char>(&buff[0], &buff[OBFUSCATE_KEY_NUM_BYTES]);
+    return std::vector<unsigned char>(OBFUSCATE_KEY_NUM_BYTES, '\000');
 
 }
 
